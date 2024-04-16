@@ -1,0 +1,4 @@
+Flask
+beautifulsoup4
+openai==0.28
+requests
