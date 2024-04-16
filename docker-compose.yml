@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+ freescout_ai_faq:
+  container_name: freescout_ai_faq
+  build: .
+  ports:
+  - "8000:5000"
+  env_file:
+  - .env

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run Function</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <center><h1>UDP AI FAQ GENERATOR</h1></center>
+        <form id="run-function-form" action="/run_function" method="post">
+            <label for="mailboxId">Mailbox ID:</label>
+            <input type="text" id="mailboxId" name="mailboxId" placeholder="Freescout Mailbox ID"><br><br>
+            <label for="pageSize">FAQs needed:</label>
+            <input type="text" id="pageSize" name="pageSize" placeholder="Enter the amount of FAQs you need"><br><br>
+            <label for="model">AI Model:</label>
+            <input type="text" id="model" name="model" placeholder="Enter any OpenAI model e.g gpt-4, gpt-3.5-turbo"><br><br>
+            <label for="temperature">Temperature:</label>
+            <input type="text" id="temperature" name="temperature" placeholder="Enter the value of how much response randomness needed between 0 and 2"><br><br>
+            <label for="maxTokens">Response Length:</label>
+            <input type="text" id="maxTokens" name="maxTokens" placeholder="Enter the length of each AI response needed"><br><br>
+            <center><button type="submit">Generate</button></center>
+        </form>
+        <div class="results" id="results-container">
+            <h3>AI and Original Results:</h3>
+            <ul id="results-list"></ul>
+        </div>
+        <center><button class="button download-button" id="download-button">Download Results</button></center>
+    </div>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
