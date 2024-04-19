@@ -18,8 +18,14 @@
             <input type="text" id="model" name="model" placeholder="Enter any OpenAI model e.g gpt-4, gpt-3.5-turbo"><br><br>
             <label for="temperature">Temperature:</label>
             <input type="text" id="temperature" name="temperature" placeholder="Enter the value of how much response randomness needed between 0 and 2"><br><br>
-            <label for="maxTokens">Response Length:</label>
-            <input type="text" id="maxTokens" name="maxTokens" placeholder="Enter the length of each AI response needed"><br><br>
+            <label for="max_tokens">Response Length:</label>
+            <input type="text" id="max_tokens" name="max_tokens" placeholder="Enter the length of each AI response needed"><br><br>
+            <!-- Input field for API key -->
+            <label for="apiKey">API Key:</label>
+            <input type="text" id="apiKey" name="apiKey" placeholder="Enter your OpenAI API Key"><br><br>
+            <!-- Input field for FreeScout API key -->
+            <label for="freeScoutApiKey">FreeScout API Key:</label>
+            <input type="text" id="freeScoutApiKey" name="freeScoutApiKey" placeholder="Enter your FreeScout API Key"><br><br>
             <center><button type="submit">Generate</button></center>
         </form>
         <div class="results" id="results-container">

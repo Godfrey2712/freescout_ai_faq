@@ -10,8 +10,13 @@ import os
 app = Flask(__name__)
 
 # Define the api key for open-ai here
-api_key = os.getenv('api_key')
-openai.api_key = api_key
+# Get the API key from the env file
+api_key = None
+api_key = os.getenv('api_key')   
+
+#Define the api key for freescout here
+free_scout_api_key = None
+free_scout_api_key = os.getenv('freeScout_api_key')
 
 # Global variable to store the temp file_path
 file_path = None
@@ -43,16 +48,23 @@ def index():
 @app.route('/run_function', methods=['POST'])
 def run_function():
     global file_path
+    global free_scout_api_key
+
+    # Get the FreeScout API key from the form input
+    if free_scout_api_key is None:
+        free_scout_api_key = request.form.get('freeScoutApiKey')
+    #if free_scout_api_key is None:
+        #raise ValueError("FreeScout API key is not set. Please set it in the environment variables or provide it manually.")
 
     # Get values from frontend for mailbox id and page size
     mailbox_id = request.form.get('mailboxId')
     page_size = request.form.get('pageSize')
 
     # Freescout udp url with variables
-    url = f"https://helpdesk.teamupdraft.com/api/conversations?mailboxId={mailbox_id}&embed=threads&pageSize={page_size}"
+    url = f"https://helpdesk.teamupdraft.com/api/conversations?embed=threads&mailboxId={mailbox_id}&pageSize={page_size}"
     headers = {
         # Freescout API (To generate a new one, speak to system administrator)
-        "X-FreeScout-API-Key": os.getenv('freeScout_api_key'),
+        "X-FreeScout-API-Key": free_scout_api_key,
     }
 
     params = {
@@ -186,6 +198,16 @@ def strip_name_and_email_from_body(body):
 
 # AI prompt for generating the FAQ from freescout
 def summarize(text, is_customer_message=True):
+    global api_key
+    # If API key is not provided from the environment variable
+    if api_key is None:  
+        # Get the API key from environment variables
+        api_key = request.form.get('apiKey')
+    # If API key is not found in both frontend input and environment variables
+    #if api_key is None:  
+        #raise ValueError("OpenAI API key is not set. Please set it in the environment variables or provide it manually.")
+    openai.api_key = api_key
+
     if is_customer_message:
         instruction = f"If it is a customer message, summarize it into an FAQ topic while retaining context: {text}"
         role = "user"
