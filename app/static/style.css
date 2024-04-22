@@ -115,3 +115,21 @@ textarea {
 .download-button:hover {
     background-color: #218838;
 }
+
+#continue-button {
+    display: none;
+    padding: 10px 20px; 
+    background-color: #4CAF50; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+#continue-button:hover {
+    background-color: #45a049; 
+}
+
+.submit-button-hidden {
+    display: none;
+}

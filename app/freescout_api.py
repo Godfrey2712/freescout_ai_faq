@@ -58,7 +58,12 @@ def run_function():
 
     # Get values from frontend for mailbox id and page size
     mailbox_id = request.form.get('mailboxId')
-    page_size = request.form.get('pageSize')
+    page_size = int(request.form.get('pageSize'))
+
+    # Extract the flag value from the request
+    continue_despite_mismatch = request.form.get('continueDespiteMismatch')
+    # Convert to boolean
+    continue_despite_mismatch = continue_despite_mismatch == 'true'
 
     # Freescout udp url with variables
     url = f"https://helpdesk.teamupdraft.com/api/conversations?embed=threads&mailboxId={mailbox_id}&pageSize={page_size}"
@@ -76,9 +81,11 @@ def run_function():
     if response.status_code == 200:
         data = response.json()
         if "_embedded" in data and "conversations" in data["_embedded"]:
+            # Initialize counts for message types
+            message_counts = {"customer": 0, "message": 0}  
             with tempfile.NamedTemporaryFile(mode='w+', delete=False, encoding="utf-8") as knowledge_file:
                 for conversation in data["_embedded"]["conversations"]:
-                    if "threadsCount" in conversation and conversation["threadsCount"] > 1:
+                    if "threadsCount" in conversation and conversation["threadsCount"] > 0:
                         threads = conversation.get("_embedded", {}).get("threads", [])
                         if threads:
                             for thread in threads:
@@ -88,6 +95,7 @@ def run_function():
                                 if thread["type"] == "customer":
                                     customer_messages.append(strip_name_and_email_from_body(thread['body']))
                                 elif thread["type"] == "message":
+                                    message_counts["message"] += 1
                                     support_responses.append(strip_name_and_email_from_body(thread['body']))
 
                                 # Skip the thread if both customer_messages and support_responses are empty
@@ -107,7 +115,11 @@ def run_function():
                                         knowledge_file.write(body + "\n")
 
                             knowledge_file.write("=" * 30 + "\n")
-            
+                        # Check if the requested number of FAQs matches the actual number of support responses
+                requested_faqs = page_size
+                actual_responses = message_counts["message"]
+                if requested_faqs != actual_responses and not continue_despite_mismatch:
+                    return jsonify({'status': 'error', 'message': f'The requested number of FAQs ({requested_faqs}) does not match the actual number of support responses of ({actual_responses}) in the threads'})         
             # Assign file_path to the global variable
             file_path = knowledge_file.name
 

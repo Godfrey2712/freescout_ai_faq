@@ -1,4 +1,5 @@
 let fetchingData = false; // Flag to track if data is currently being fetched
+let continueDespiteMismatch = false; // Flag to indicate whether to continue despite the mismatch
 
 function fetchResults() {
     if (fetchingData) {
@@ -86,11 +87,27 @@ document.getElementById('run-function-form').addEventListener('submit', function
     event.preventDefault();
     const form = document.getElementById('run-function-form');
     const formData = new FormData(form);
+
+    // Append the flag value to the form data
+    formData.append('continueDespiteMismatch', continueDespiteMismatch);
+
     fetch('/run_function', { method: 'POST', body: formData })
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
                 fetchResults();
+            } else {
+                // Handle error response
+                const confirmMessage = `${data.message}. Do you want to continue with this value?`;
+                if (confirm(confirmMessage)) {
+                    // Hide the submit button
+                    document.getElementById('submit-button').classList.add('submit-button-hidden');
+                    // If user decides to continue, show the continue button
+                    document.getElementById('continue-button').style.display = 'block';
+                } else {
+                    // Inform the user that the operation is cancelled
+                    alert("Operation cancelled."); 
+                }
             }
         })
         .catch(error => console.error('Error running function:', error));
@@ -130,6 +147,12 @@ document.addEventListener('DOMContentLoaded', function() {
 // Event listener for the download button
 document.getElementById('download-button').addEventListener('click', function() {
     downloadResults();
+});
+
+// Add event listener to handle user's choice to continue despite the mismatch
+document.getElementById('continue-button').addEventListener('click', function() {
+    // Update the flag value
+    continueDespiteMismatch = true; 
 });
 
 // Fetch results initially
