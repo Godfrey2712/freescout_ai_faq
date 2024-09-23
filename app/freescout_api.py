@@ -66,7 +66,7 @@ def run_function():
     continue_despite_mismatch = continue_despite_mismatch == 'true'
 
     # Freescout udp url with variables
-    url = f"https://helpdesk.teamupdraft.com/api/conversations?embed=threads&mailboxId={mailbox_id}&pageSize={page_size}"
+    url = f"https://helpdesk.team.com/api/conversations?embed=threads&mailboxId={mailbox_id}&pageSize={page_size}"
     headers = {
         # Freescout API (To generate a new one, speak to system administrator)
         "X-FreeScout-API-Key": free_scout_api_key,
