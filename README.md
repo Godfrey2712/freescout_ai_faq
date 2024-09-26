@@ -18,7 +18,7 @@ This project is setup to generate AI FAQs from FreeScout API. It also displays t
 ## Deploy with CI-CD
 
 ## For Devs
-### What does what?
+
 ### Standards to follow!
 
 ## Usage
