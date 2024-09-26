@@ -29,7 +29,7 @@ This project is setup to generate AI FAQs from FreeScout API. It also displays t
 4. Temperature: 
 
 ## License
-Project is currently unlicensed, and all rights are associated with UDP.
+Project is currently unlicensed, and all rights are associated with CONVOSTEM LTD.
 
 ## Project status
 Currently under AB testing.
