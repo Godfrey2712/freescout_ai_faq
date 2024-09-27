@@ -1,12 +1,1 @@
-1. FAQ: How can I cancel my subscription and get a refund?
 
-Answer: You can contact our support team for any issues regarding your subscription. They have the ability to cancel your subscription and initiate a refund. Please note that the refund may take a few days to reflect in your account.
-====================================================================================================
-2. FAQ: Where can I find the restoration log file for my website and what information should I provide for troubleshooting?
-
-Answer: The restoration log file can be found in the wp-content / updraft folder on your website. This file will contain the word restore and should have been created around the time the restoration took place. For troubleshooting, please also provide details of any fatal errors you have encountered.
-====================================================================================================
-3. FAQ: How can I upgrade to an Agency licence and what is the most cost-effective method?
-
-Answer: The most cost-effective method to upgrade to an Agency licence is by cancelling your existing UpdraftPlus subscriptions. You can then purchase the Agency licence from our shop. Use the coupon code 7S7NQS3S at checkout, which will deduct the cost of your business subscription, meaning you would only pay the difference. If you decide to proceed with this, let us know so we can cancel your other overdue UpdraftPlus subscriptions.
-====================================================================================================
