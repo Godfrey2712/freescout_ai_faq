@@ -1,8 +1,1 @@
-1. FAQ: How can I cancel my subscription and get a refund?
 
-Answer: You can contact our support team for any issues regarding your subscription. They have the ability to cancel your subscription and initiate a refund. Please note that the refund may take a few days to reflect in your account.
-====================================================================================================
-2. FAQ: Where can I find the restoration log file for my website and what information should I provide for troubleshooting?
-
-Answer: The restoration log file can be found in the wp-content / updraft folder on your website. This file will contain the word restore and should have been created around the time the restoration took place. For troubleshooting, please also provide details of any fatal errors you have encountered.
-====================================================================================================
