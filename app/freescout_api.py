@@ -53,9 +53,7 @@ def run_function():
     # Get the FreeScout API key from the form input
     if free_scout_api_key is None:
         free_scout_api_key = request.form.get('freeScoutApiKey')
-    #if free_scout_api_key is None:
-        #raise ValueError("FreeScout API key is not set. Please set it in the environment variables or provide it manually.")
-
+        
     # Get values from frontend for mailbox id and page size
     mailbox_id = request.form.get('mailboxId')
     page_size = int(request.form.get('pageSize'))
@@ -171,14 +169,14 @@ def fetch_results():
     else:
         return jsonify({"status": "error", "message": "No support messages found."})
 
-# Clean data 1
+# Clean freescout data
 def extract_text_from_html(html):
     if html is not None:
         soup = BeautifulSoup(html, 'html.parser')
         return soup.get_text()
     return ""
 
-# Clean data 2
+# Strip personal details off
 def strip_name_and_email_from_body(body):
     if body is not None:
         # Define regular expressions to match name, email, URL, and address patterns
@@ -215,9 +213,6 @@ def summarize(text, is_customer_message=True):
     if api_key is None:  
         # Get the API key from environment variables
         api_key = request.form.get('apiKey')
-    # If API key is not found in both frontend input and environment variables
-    #if api_key is None:  
-        #raise ValueError("OpenAI API key is not set. Please set it in the environment variables or provide it manually.")
     openai.api_key = api_key
 
     if is_customer_message:
