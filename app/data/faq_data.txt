@@ -14,7 +14,3 @@ Answer: The most cost-effective method to upgrade to an Agency licence is by can
 
 Answer: If you're experiencing any issues with your product, please contact our support team. Provide a detailed description of the problem, and we'll do our best to assist you.
 ====================================================================================================
-5. FAQ: Why am I receiving email notifications from UpdraftPlus and how can I stop them?
-
-Answer: The email notifications you are receiving are likely because your email address has been added to a free text field in UpdraftPlus settings. Unfortunately, we do not have control over this field. We recommend contacting the person who added your email and asking them to remove it.
-====================================================================================================
