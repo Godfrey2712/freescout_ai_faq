@@ -10,7 +10,3 @@ Answer: The restoration log file can be found in the wp-content / updraft folder
 
 Answer: The most cost-effective method to upgrade to an Agency licence is by cancelling your existing UpdraftPlus subscriptions. You can then purchase the Agency licence from our shop. Use the coupon code 7S7NQS3S at checkout, which will deduct the cost of your business subscription, meaning you would only pay the difference. If you decide to proceed with this, let us know so we can cancel your other overdue UpdraftPlus subscriptions.
 ====================================================================================================
-4. FAQ: What should I do if I have a problem with my product?
-
-Answer: If you're experiencing any issues with your product, please contact our support team. Provide a detailed description of the problem, and we'll do our best to assist you.
-====================================================================================================
