@@ -76,6 +76,7 @@ def run_function():
     }
     response = requests.get(url, headers=headers, params=params)
 
+    # Data extraction fix here
     # Loop for data extractions from freescout
     if response.status_code == 200:
         data = response.json()
