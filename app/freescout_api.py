@@ -21,7 +21,7 @@ free_scout_api_key = os.getenv('freeScout_api_key')
 # Global variable to store the temp file_path
 file_path = None
 
-# This is the part to fix
+# This is the part to update the model
 # The default parameters for the open-ai api
 openai_parameters = {
     "model": "gpt-4",
